@@ -1,0 +1,104 @@
+.login{
+    box-sizing: border-box;
+    width:100%;
+    height: 90vh;
+    background-color: #f0f2f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* object-fit: cover; */
+    /* background-image: url("/src/assets/backgrounds/BCK1.jpg"); */
+}
+
+.loginWrapper{
+    width: 70%;
+    height: 70%;
+    display: flex;
+}
+.loginLeft , .loginRight{
+    margin: 15px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.loginLogo{
+    font-size: 40px;
+    color: #EC4899;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+.loginDesc{
+    font-size: 24px;
+
+}
+.ContactImg{
+    margin-right: 20px;
+    margin-bottom: 55px;
+}
+.loginBox{
+    height: 370px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.loginInput{
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    font-style: 18px;
+    padding-left: 20px;
+}
+.loginInput:focus{
+    outline: none;
+}
+.loginButton{
+ height: 40px;
+ background-color: #EC4899;
+ color: white;
+ font-style: 20px;
+ font-weight: 500;
+ border: none;
+ border-radius: 5px;
+ cursor: pointer;
+}
+.loginForget{
+ text-align: center;
+ color: #f69551;
+}
+.loginNew{
+    height: 40px;
+    width: 60%;
+ background-color: #42b72a;
+ color: white;
+ font-style: 20px;
+ font-weight: 500;
+ border: none;
+ border-radius: 5px;
+ cursor: pointer;
+ align-self: center;
+}
+.loginLink{
+    text-decoration: none;
+}
+
+@media (max-width:500px){
+    .loginWrapper{
+        flex-direction: column;
+        width: 90%;
+        margin-top: 0px;
+    }
+    .login{
+        height: 900px;
+        margin-top: -80px;
+    }
+    .loginLeft{
+        margin: 0px;
+    }
+    .loginRight{
+        margin: 0;
+    }
+}

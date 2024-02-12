@@ -1,0 +1,34 @@
+/* Footer.css */
+
+.footer {
+    background-color: #201f1f;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    /* Add other footer styles as needed */
+  }
+  
+  .social-media {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+  .social-media a img {
+width: 30px;
+height: 30px;
+  }
+  
+  .social-media a {
+    color: #333;
+    margin: 5px 10px;
+    font-size: 20px;
+  }
+  
+  .social-media a:hover {
+    color: #007bff; /* Change color on hover */
+  }
+  
+  /* Additional styling for copyright and thanks sections */
+  

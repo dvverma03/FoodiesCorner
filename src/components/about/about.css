@@ -1,0 +1,55 @@
+.about-page {
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    
+    background-color:rgb(248, 237, 243);
+  }
+  
+  .aboutPage{
+    display: flex;
+    justify-content: center;
+  }
+  .AbouDesc{
+    font-size: 40px;
+    text-align: center;
+    font-weight: 600;
+  }
+  .about-page h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .about-page h3 {
+    font-size: 2.15em;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    font-weight: 600;
+  }
+  
+  .about-page p {
+    margin: 15px;
+    font-size: 20px;
+  }
+  
+  .about-page ul {
+    margin-bottom: 25px;
+    
+  }
+  
+  .about-page li {
+    list-style-type: disc;
+    margin-left: 25px;
+    list-style: none;
+  }
+  
+  .about-page a {
+    color: #007bff; /* Change the link color as needed */
+    text-decoration: none;
+  }
+  
+  .about-page a:hover {
+    text-decoration: underline;
+  }
