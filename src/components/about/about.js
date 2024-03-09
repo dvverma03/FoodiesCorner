@@ -1,9 +1,12 @@
 import React from "react";
 import "./about.css";
 import AboutImg from "/src/assets/backgrounds/aboutpage.png"
+import Header from "../header";
 
 const About = () => {
   return (
+    <>
+    <Header/>
     <div className="about-page">
       <div className="aboutPage">
         <img src={AboutImg} alt="" className="aboutpageImg" />
@@ -35,6 +38,7 @@ const About = () => {
         </a>
       </p>
     </div>
+    </>
   );
 };
 

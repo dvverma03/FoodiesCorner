@@ -4,6 +4,7 @@ import { IMG_CDN_URL } from "./constant";
 import useRestaurant from "../utils/useRestaurant";
 import useRestaurantItem from "../utils/useRestaurantItems";
 import RestaurentItemCategory from "./restaurentItemCategory";
+import Header from "./header";
 
 const RestaurantMenu = () => {
   const param = useParams();
@@ -22,6 +23,7 @@ const RestaurantMenu = () => {
 
   return (
     <>
+    <Header/>
       <div className=" ml-6 md:flex md:justify-around">
         <img
           className="w-[100%] pl-10 ml-4 md:w-[500px]  relative right-16 py-6"

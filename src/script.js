@@ -28,7 +28,7 @@ const Element= ()=>{
         {/* show userName  */}
             {/* <userContext.Provider value={{loginUser:"Deep"}}> */}
                 {/* show deep  */}
-            <Header/>
+            {/* <Header/> */}
             {/* </userContext.Provider> */}
             <Outlet />
             <Footer />

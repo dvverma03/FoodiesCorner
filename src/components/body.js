@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import RestaurantCard, {WithPromotedLabel} from "./restaurantcard";
-import Schimme from "./schimmie";
 import { Link } from "react-router-dom";
 import { filterdata } from "../utils/helper";
 import React, { useState, useEffect } from "react";
 import userContext from "../utils/userContext";
 import axios from "axios";
+import Header from "./header";
+import ImgLoadingOverlay from "./ImgLoadingOverlay";
+var cors = require('cors')
 
 
 const filterData = (searchTerm, restaurants) => {
@@ -27,7 +29,6 @@ const Body = () => {
   async function getRestaurantData() {
     try {
       const URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING&_=" + Date.now();
-  
       const response = await axios.get(URL);
       const data = response.data;
   
@@ -45,13 +46,16 @@ const Body = () => {
     const data = filterdata(searchBtn, allRestaurants);
     setFilteredRestaurants(data);
   };
-
-  if (!allRestaurants?.length) return null;
+  if (!allRestaurants.length) {
+    return <ImgLoadingOverlay />;
+  }
+  
 
   return (allRestaurants?.length == 0) ? (
-    <Schimme />
+    <ImgLoadingOverlay />
   ) : (
     <>
+    <Header/>
       <div className="searchBar">
         <input
           type="text"
