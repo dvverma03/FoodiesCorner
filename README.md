@@ -5,7 +5,7 @@
 <p>{Home page, search bar, restaurent details page, Menu category, menu items, Cart , about, contact page , form validation}</p>
 <h4>Deploy link</h4>
 
-<a>https://thefoodies0510.netlify.app/</a>
+<a>https://thefoodies2010.netlify.app/</a>
 
 <h4>If not open in your device please add this extention due to CORS issues (https://chromewebstore.google.com/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc)</h4>
 
