@@ -2,12 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import RestaurantCard, { WithPromotedLabel } from "./restaurantcard";
 import { Link } from "react-router-dom";
 import { filterdata } from "../utils/helper";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import userContext from "../utils/userContext";
 import axios from "axios";
 import Header from "./header";
 import ImgLoadingOverlay from "./ImgLoadingOverlay";
-var cors = require('cors');
+var cors = require('cors')
 
 const filterData = (searchTerm, restaurants) => {
   return restaurants?.filter((restaurant) =>
@@ -15,7 +15,7 @@ const filterData = (searchTerm, restaurants) => {
   );
 };
 
-const Body = () => {
+const TopRestaurant = () => {
   const [searchBtn, setSearchBtn] = useState("");
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
@@ -31,7 +31,7 @@ const Body = () => {
       const response = await axios.get(URL);
       const data = response.data;
 
-      const restaurants = data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+      const restaurants = data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
       setAllRestaurants(restaurants);
       setFilteredRestaurants(restaurants);
     } catch (error) {
@@ -41,15 +41,10 @@ const Body = () => {
 
   const RestaurentWithPromoted = WithPromotedLabel(RestaurantCard);
 
-  const handleSearch = () => {
-    const data = filterdata(searchBtn, allRestaurants);
-    setFilteredRestaurants(data);
-  };
-
-  const handleInputChange = (e) => {
-    const value = e.target.value;
-    setSearchBtn(value);
-    const data = filterdata(value, allRestaurants);
+  const handleSearch = (e) => {
+    const searchTerm = e.target.value;
+    setSearchBtn(searchTerm);
+    const data = filterData(searchTerm, allRestaurants);
     setFilteredRestaurants(data);
   };
 
@@ -58,7 +53,7 @@ const Body = () => {
   }
 
   return (
-    <>
+    <div>
       <Header />
       <div className="searchBar">
         <input
@@ -66,7 +61,7 @@ const Body = () => {
           className="search-input px-4 py-2 mx-2 my-1 border-0 hover:outline-0"
           placeholder="Search your restaurant"
           value={searchBtn}
-          onChange={handleInputChange}
+          onChange={handleSearch}
         />
         <button
           className="search-btn round-full px-4 py-2 rounded-md border-0"
@@ -79,21 +74,27 @@ const Body = () => {
         {filteredRestaurants.length === 0 ? (
           <div className="w-screen h-screen">
             <div className="w-screen text-3xl font-bold my-4 text-center">No Restaurants matched with this name. Please search something different</div>
-            <img className="w-screen h-[550px]" src="https://t4.ftcdn.net/jpg/03/88/63/83/360_F_388638369_wSBADhKfhiTx6Q5Pz1xfdpy6zotku1Sg.jpg" alt="" srcSet="" />
+            <img className="w-screen h-[550px]" src="https://t4.ftcdn.net/jpg/03/88/63/83/360_F_388638369_wSBADhKfhiTx6Q5Pz1xfdpy6zotku1Sg.jpg" alt="" srcset="" />
           </div>
-        ) : filteredRestaurants.map((restaurant) => {
-          return (
-            <Link
-              to={`/restaurant/${restaurant.info.id}`}
-              key={restaurant.info.id}
-            >
-              {restaurant?.info?.promoted ? <RestaurentWithPromoted {...restaurant?.info} /> : <RestaurantCard {...restaurant.info} />}
-            </Link>
-          );
-        })}
+        ) : (
+          filteredRestaurants.map((restaurant) => {
+            return (
+              <Link
+                to={`/restaurant/${restaurant.info.id}`}
+                key={restaurant.info.id}
+              >
+                {restaurant?.info?.promoted ? (
+                  <RestaurentWithPromoted {...restaurant?.info} />
+                ) : (
+                  <RestaurantCard {...restaurant.info} />
+                )}
+              </Link>
+            );
+          })
+        )}
       </div>
-    </>
+    </div>
   );
 };
 
-export default Body;
+export default TopRestaurant;

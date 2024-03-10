@@ -1,19 +1,20 @@
-.headerShimmer1{
+.headerShimmer{
     height: 90px;
     width: 100vw;
     background-image: linear-gradient(to right, rgb(211, 209, 209) , rgb(252, 251, 251));
 }
 
 
-.container1{
+.container{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-.box1{
-    width: 300px;
+.box{
+    width: 180px;
     height: 200px;
+    border-radius: 50%;
     background-color: white;
     margin: 20px;
     display: flex;
@@ -21,20 +22,16 @@
     justify-content: space-around;
 }
 
-.major1{
+.major{
     width: 80%;
     height: 100px;
+    border-radius: 100%;
     background-image: linear-gradient(to right, rgb(211, 209, 209) , rgb(252, 251, 251));
 }
 
-.minor_11{
+.minor_1{
     width: 70%;
     height: 30px;
     background-image: linear-gradient(to right, rgb(211, 209, 209) , rgb(252, 251, 251));
 }
 
-.minor_21{
-    width: 60%;
-    height: 20px;
-    background-image: linear-gradient(to right, rgb(211, 209, 209) , rgb(252, 251, 251));
-}

@@ -12,6 +12,8 @@ import userContext from "./utils/userContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
+import TopRestaurant from "./components/TopRestaurants";
+import YourMind from "./components/YourMind";
  
 const Element= ()=>{
     const [userName, setUserName]=useState("");
@@ -53,6 +55,16 @@ const appRouter = createBrowserRouter([
             {
                 path:"/",
                 element:<Body/>,
+                errorElement:<Error/>
+            },
+            {
+                path:"/favrestaurant",
+                element:<TopRestaurant/>,
+                errorElement:<Error/>
+            },
+            {
+                path:"/yourmind",
+                element:<YourMind/>,
                 errorElement:<Error/>
             },
             {

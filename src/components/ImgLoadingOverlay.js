@@ -4,14 +4,14 @@ import "./ImgLoadingOverlay.css"
 const ImgLoadingOverlay = () => {
   return (
     <>
-    <div className='headerShimmer'></div>
-    <div className="container">
+    <div className='headerShimmer1'></div>
+    <div className="container1">
           {Array(16).fill("").map((e)=>(
             <>
-          <div className="box" key={e}>
-            <div className="major"></div>
-            <div className="minor_1"></div>
-            <div className="minor_2"></div>
+          <div className="box1" key={e}>
+            <div className="major1"></div>
+            <div className="minor_11"></div>
+            <div className="minor_21"></div>
           </div>
           </>
         

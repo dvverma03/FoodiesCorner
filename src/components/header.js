@@ -17,7 +17,6 @@ const Header = () => {
   const shows = useSelector((store) => store.gpt.showGptSearch);
   const dispatch = useDispatch()
 
-  console.log(shows)
 
   function showMenuHandler() {
     setShowMenu(!showMenu);
@@ -54,6 +53,24 @@ const Header = () => {
                   onClick={() => setIslogin(false)}
                 >
                   Restaurants
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="p-4 m-2 text-xl w-36 box-border hover:font-bold"
+                  to="/favrestaurant"
+                  onClick={() => setIslogin(false)}
+                >
+                  Top Restaurants
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="p-4 m-2 text-xl w-36 box-border hover:font-bold"
+                  to="/yourmind"
+                  onClick={() => setIslogin(false)}
+                >
+                  Dishes
                 </Link>
               </li>
               <li>
