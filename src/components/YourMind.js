@@ -15,7 +15,8 @@ const YourMind = () => {
   async function getRestaurantData() {
     try {
       const URL =
-        "https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Flist%2Fv5%3Fis-seo-homepage-enabled%3Dtrue%26page_type%3DDESKTOP_WEB_LISTING%26lat=25.5940947&lng=85.1375645";
+        "https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Flist%2Fv5%3Flat%3D12.9351929%26lng%3D77.62448069999999%26page_type%3DDESKTOP_WEB_LISTING";
+        // "https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Flist%2Fv5%3Fis-seo-homepage-enabled%3Dtrue%26page_type%3DDESKTOP_WEB_LISTING%26lat=25.5940947&lng=85.1375645";
       const response = await axios.get(URL);
       const data =
         response?.data?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle
@@ -26,7 +27,7 @@ const YourMind = () => {
     }
   }
 
-  if (!details){
+  if (!details ){
     return <ImgLoadingOverlay />;
   }
 

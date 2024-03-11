@@ -6,9 +6,9 @@ const ImgLoadingOverlay = () => {
     <>
     <div className='headerShimmer'></div>
     <div className="container">
-          {Array(18).fill("").map((e)=>(
+          {Array(18).fill("").map((e,index)=>(
             <>
-          <div className="box" key={e}>
+          <div className="box" key={index}>
             <div className="major"></div>
             <div className="minor_1"></div>
           </div>

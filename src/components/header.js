@@ -17,6 +17,23 @@ const Header = () => {
   const shows = useSelector((store) => store.gpt.showGptSearch);
   const dispatch = useDispatch()
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // Adjust the threshold as needed
+
+  // Use useEffect to update the device type on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Adjust the threshold as needed
+    };
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
 
   function showMenuHandler() {
     setShowMenu(!showMenu);
@@ -64,7 +81,7 @@ const Header = () => {
                   Top Restaurants
                 </Link>
               </li>
-              <li>
+              {!isMobile && <li>
                 <Link
                   className="p-4 m-2 text-xl w-36 box-border hover:font-bold"
                   to="/yourmind"
@@ -72,7 +89,7 @@ const Header = () => {
                 >
                   Dishes
                 </Link>
-              </li>
+              </li>}
               <li>
                 <Link
                   className="p-4 m-2 text-xl w-36 hover:font-bold"

@@ -9,11 +9,29 @@ import Header from "./header";
 const RestaurantMenu = () => {
   const param = useParams();
   const { id } = param;
+  
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // Adjust the threshold as needed
 
+  // Use useEffect to update the device type on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Adjust the threshold as needed
+    };
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  
   const restaurant = useRestaurant(id);
   const Menu = useRestaurantItem(id);
+  const index= isMobile?5:2
   const mainMenu =
-    Menu?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    Menu?.data?.cards[index]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (e) =>
         e?.card.card["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"

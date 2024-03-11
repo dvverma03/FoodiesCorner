@@ -21,17 +21,38 @@ const TopRestaurant = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const { loginUser, setUserName } = useContext(userContext);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // Adjust the threshold as needed
+
+  // Use useEffect to update the device type on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Adjust the threshold as needed
+    };
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     getRestaurantData();
   }, []);
 
   async function getRestaurantData() {
     try {
-      const URL = "https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Flist%2Fv5%3Fis-seo-homepage-enabled%3Dtrue%26page_type%3DDESKTOP_WEB_LISTING%26lat=25.5940947&lng=85.1375645";
+      const URL = "https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Flist%2Fv5%3Flat%3D12.9351929%26lng%3D77.62448069999999%26page_type%3DDESKTOP_WEB_LISTING";
+      // const URL = "https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Flist%2Fv5%3Fis-seo-homepage-enabled%3Dtrue%26page_type%3DDESKTOP_WEB_LISTING%26lat=25.5940947&lng=85.1375645";
+
+      const index = isMobile ? 2 : 4;
+
       const response = await axios.get(URL);
       const data = response.data;
 
-      const restaurants = data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+      const restaurants = data?.data?.cards[index]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
       setAllRestaurants(restaurants);
       setFilteredRestaurants(restaurants);
     } catch (error) {
@@ -48,9 +69,9 @@ const TopRestaurant = () => {
     setFilteredRestaurants(data);
   };
 
-  if (!allRestaurants.length) {
+  if (!allRestaurants || allRestaurants?.length === 0) {
     return <ImgLoadingOverlay />;
-  }
+  }  
 
   return (
     <div>
