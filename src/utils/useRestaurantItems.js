@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Swiggy_RESTAURANT_API } from "../components/constant";
 
 const useRestaurantItem = (id) => {
   const [restaurant, setRestaurant] = useState(null);
@@ -10,7 +11,7 @@ const useRestaurantItem = (id) => {
   async function getRestaurantInfo() {
     try {
       const data = await fetch(
-        "https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Fmenu%2Fpl%3Fpage-type%3DREGULAR_MENU%26complete-menu%3Dtrue%26lat%3D12.9351929%26lng%3D77.62448069999999%26restaurantId%3D" +
+        Swiggy_RESTAURANT_API +
           id
       );
       const json = await data.json();
