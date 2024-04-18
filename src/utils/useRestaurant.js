@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Swiggy_RESTAURANT_API } from "../components/constant";
 
 const useRestaurant = (id) => {
   const [restaurant, setRestaurant] = useState(null);
@@ -20,7 +21,7 @@ const useRestaurant = (id) => {
     };
   }, []);
   
-  const index= isMobile?2:0
+  const index= isMobile?2:2
 
   useEffect(() => {
     getRestaurantInfo();
@@ -28,9 +29,8 @@ const useRestaurant = (id) => {
 
   async function getRestaurantInfo() {
     const data = await fetch(
-      // "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.5015877&lng=80.307915&restaurantId=" +
-      "https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Fmenu%2Fpl%3Fpage-type%3DREGULAR_MENU%26complete-menu%3Dtrue%26lat%3D26.5015877%26lng%3D80.307915%26restaurantId%3D" +
-        id 
+      Swiggy_RESTAURANT_API
+        + id 
     );
     const json = await data.json();
     console.log(json?.data)

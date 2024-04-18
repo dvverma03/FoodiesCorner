@@ -7,6 +7,7 @@ import userContext from "../utils/userContext";
 import axios from "axios";
 import Header from "./header";
 import ImgLoadingOverlay from "./ImgLoadingOverlay";
+import { SWIGGY_API } from "./constant";
 var cors = require('cors');
 
 const filterData = (searchTerm, restaurants) => {
@@ -46,13 +47,13 @@ const Body = () => {
   async function getRestaurantData() {
     try {
 
-      const URL = "https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Flist%2Fv5%3Fis-seo-homepage-enabled%3Dtrue%26page_type%3DDESKTOP_WEB_LISTING%26lat=25.5940947&lng=85.1375645";
+      const URL = SWIGGY_API;
       const index = isMobile ? 2 : 1;
       const response = await axios.get(URL);
       const data = response.data;
 
       const restaurants = data?.data?.cards[index]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-      // console.log(data)
+      console.log(restaurants)
       setAllRestaurants(restaurants);
       setFilteredRestaurants(restaurants);
     } catch (error) {

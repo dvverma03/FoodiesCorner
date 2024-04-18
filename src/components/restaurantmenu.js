@@ -10,18 +10,14 @@ const RestaurantMenu = () => {
   const param = useParams();
   const { id } = param;
   
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // Adjust the threshold as needed
-
-  // Use useEffect to update the device type on window resize
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Adjust the threshold as needed
+      setIsMobile(window.innerWidth <= 768); 
     };
 
-    // Add event listener for window resize
     window.addEventListener("resize", handleResize);
 
-    // Cleanup the event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -29,7 +25,8 @@ const RestaurantMenu = () => {
   
   const restaurant = useRestaurant(id);
   const Menu = useRestaurantItem(id);
-  const index= isMobile?5:2
+  const index= isMobile?5:4
+  console.log(Menu)
   const mainMenu =
     Menu?.data?.cards[index]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (e) =>
@@ -44,7 +41,7 @@ const RestaurantMenu = () => {
     <Header/>
       <div className=" ml-6 md:flex md:justify-around">
         <img
-          className="w-[100%] pl-10 ml-4 md:w-[500px]  relative right-16 py-6"
+          className="w-72 h-72 pl-10 ml-4 md:w-[500px]  relative right-16 py-6"
           src={IMG_CDN_URL + restaurant?.cloudinaryImageId}
           alt="Restaurant"
         />

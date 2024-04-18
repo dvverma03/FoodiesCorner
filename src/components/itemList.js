@@ -36,7 +36,7 @@ const ItemList = ({ data }) => {
               </button>
             </div>
             <img
-              className=" w-full m-1"
+              className=" h-24 w-36 m-1"
               src={IMG_CDN_URL + item?.card?.info?.imageId}
               alt=""
               srcset=""
