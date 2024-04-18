@@ -5,8 +5,9 @@
   "description": "",
   "scripts": {
     "start": "parcel index.html",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "react-scripts build"
+    "test": "jest",
+    "test:e2e":"npm run test",
+    "test:e2e:build":"npm run build"
   },
   "author": "",
   "license": "ISC",
